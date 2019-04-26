@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1" cols="100">
+		<tr>
+			<th cols="20">标题</th>
+			<th cols="60">内容</th>
+			<th cols="20">操作</th>
+		</tr>
+		<tr th:each="u : ${list}">
+			<td cols="20" th:text="${u.title}"></td>
+			<td cols="60" th:text="${u.article}"></td>
+			<td cols="20"><a th:href="@{/users/inputModify(id=${u.art_id})}">修改</a></td>
+	</table>
+</body>
+</html>

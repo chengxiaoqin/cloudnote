@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>输入修改</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+</head>
+<body>
+	输入修改
+	<form th:action="@{/users/modify}" method="post">
+		文章标题：<input type="text" name="title"/><br/>
+		文章内容：<textarea id="content"name="article" rows="15" cols="20"></textarea><br/>
+		<input type="submit" value="提交"/><br/>
+	</form>
+    <script>
+		var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+    </script>
+</body>
+</html>

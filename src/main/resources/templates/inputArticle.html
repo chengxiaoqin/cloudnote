@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	保存文章
+	<form th:action="@{/users/saveArticle}" method="post">
+		文章标题：<input type="text" name="title"/><br/>
+		文章内容：<textarea name="article" rows="15" cols="20"></textarea><br/>
+		<input type="submit" value="提交"/><br/>
+	</form>
+</body>
+</html>
