@@ -9,10 +9,13 @@
 
 </head>
 <body>
-	输入修改
-	<form th:action="@{/users/modify}" method="post">
-		文章标题：<input type="text" name="title"/><br/>
-		文章内容：<textarea id="content"name="article" rows="15" cols="20"></textarea><br/>
+	ID:<p th:text="${note.id}"></p>
+	笔记标题：<p th:text="${note.title}"></p>
+	笔记内容:<p th:text="${note.content}"></p>
+	输入修改:
+	<form th:action="@{/note/modify(id=${note.id})}" method="post">
+		笔记标题：<input type="text" name="title"/><br/>
+		笔记内容：<textarea id="content" name="content" rows="15" cols="20"></textarea><br/>
 		<input type="submit" value="提交"/><br/>
 	</form>
     <script>

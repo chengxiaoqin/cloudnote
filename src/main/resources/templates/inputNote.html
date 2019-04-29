@@ -7,9 +7,9 @@
 </head>
 <body>
 	保存文章
-	<form th:action="@{/users/saveArticle}" method="post">
+	<form th:action="@{/note/saveNote}" method="post">
 		文章标题：<input type="text" name="title"/><br/>
-		文章内容：<textarea name="article" rows="15" cols="20"></textarea><br/>
+		文章内容：<textarea name="content" rows="15" cols="20"></textarea><br/>
 		<input type="submit" value="提交"/><br/>
 	</form>
 </body>

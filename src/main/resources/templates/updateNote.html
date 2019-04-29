@@ -14,8 +14,8 @@
 		</tr>
 		<tr th:each="u : ${list}">
 			<td cols="20" th:text="${u.title}"></td>
-			<td cols="60" th:text="${u.article}"></td>
-			<td cols="20"><a th:href="@{/users/inputModify(id=${u.art_id})}">修改</a></td>
+			<td cols="60" th:text="${u.content}"></td>
+			<td cols="20"><a th:href="@{/note/inputModify(id=${u.id})}">修改</a></td>
 	</table>
 </body>
 </html>

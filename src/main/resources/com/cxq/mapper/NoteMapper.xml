@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxq.mapper.NoteMapper">
+	<resultMap type="com.cxq.model.Note" id="note">
+		<result column="user_id" property="userId" />
+	</resultMap>
+	<insert id="saveNote" parameterType="com.cxq.model.Note">
+		insert into
+		note(title,content,user_id)
+		values(#{title},#{content},#{userId});
+	</insert>
+	<select id="getNoteByUid" parameterType="int" resultMap="note">
+		select *
+		from note where user_id = #{i};
+	</select>
+	<update id="updateNote" parameterType="com.cxq.model.Note">
+		update Note
+		set
+		title = #{title},content = #{content}
+		where id=#{id};
+	</update>
+
+	<select id="getNoteById" parameterType="int" resultMap="note">
+		select *
+		from note where id = #{i};
+	</select>
+</mapper>
