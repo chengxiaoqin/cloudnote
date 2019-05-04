@@ -5,7 +5,7 @@ public class Note {
 	private Integer id;  
 	private String title;
 	private String content;
-	private Integer userId; 
+	private Integer userId;
 
 	public Integer getId() {
 		return id;
@@ -43,9 +43,5 @@ public class Note {
 		this.userId = userId;
 	}
 
-	@Override
-	public String toString() {
-		return "Article [art_id=" + id + ", title=" + title + ", article=" + content + ", id=" + userId + "]";
-	}
 
 }

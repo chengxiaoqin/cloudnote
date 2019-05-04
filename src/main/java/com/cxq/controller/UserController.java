@@ -27,8 +27,6 @@ import com.cxq.service.UserService;
 public class UserController {
 
 	public static final String HOME_PAGE = "homepage";
-	public static final String MODIFY_PAGE = "inputModify";
-	public static final String MODIFY_SUCCEED = "modifySucceed";
 	public static final String REGISTER_SUCCEED = "registerSucceed";
 	public static final String REGISTER_ERROR = "registerError";
 	public static final String LOGIN_ERROR = "loginError";
@@ -36,7 +34,7 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private NoteService noteService;
-
+	
 	/**
 	 * 页面跳转
 	 */
@@ -49,8 +47,8 @@ public class UserController {
 	 */
 	@PostMapping("/register")
 	public String addUser(User user) {
-		int i = userService.checkUserName(user); // 检测数据库中是否有用户名重复
-		if (i == 1) {
+		int result = userService.checkUserName(user); // 检测数据库中是否有用户名重复
+		if (result == 1) {
 			return REGISTER_ERROR;
 		}
 		userService.addUser(user);
@@ -62,8 +60,8 @@ public class UserController {
 	 */
 	@PostMapping("/loginUser")
 	public String loginUser(User user, HttpServletResponse response ,HttpServletRequest request) {
-		int i = userService.checkUser(user); // 检测用户名和密码是否正确
-		if (i == 1) {
+		int result = userService.checkUser(user); // 检测用户名和密码是否正确
+		if (result == 1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("name", user.getName());
 			return HOME_PAGE; // 跳转到主页

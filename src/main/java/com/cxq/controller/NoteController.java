@@ -29,9 +29,6 @@ public class NoteController {
 	public static final String HOME_PAGE = "homepage";
 	public static final String MODIFY_PAGE = "inputModify";
 	public static final String MODIFY_SUCCEED = "modifySucceed";
-	public static final String REGISTER_SUCCEED = "registerSucceed";
-	public static final String REGISTER_ERROR = "registerError";
-	public static final String LOGIN_ERROR = "loginError";
 	public static final String SAVE_SUCCEED = "saveSucceed";
 	public static final String UPDATE_PATE = "updateNote";
 	@Autowired
@@ -51,11 +48,11 @@ public class NoteController {
 	 */
 	@PostMapping("/saveNote")	//get和post,delete,put
 	public String saveArticle(Note note, HttpServletRequest request) {
-		int i;
 		HttpSession session = request.getSession();
 		String name = (String) session.getAttribute("name");
-		i = userService.queryId(name);
-		note.setUserId(i); // 添加至note的外键
+		int uid;
+		uid = userService.queryId(name);
+		note.setUserId(uid); // 添加至note的外键
 		noteService.addNote(note);
 		return SAVE_SUCCEED;
 	}
@@ -65,12 +62,12 @@ public class NoteController {
 	 */
 	@GetMapping("/showNote")
 	public String showArticle(HttpServletRequest request, Model model) {
-		int i;
 		List<Note> list = new ArrayList<Note>();
 		HttpSession session = request.getSession();
 		String name = (String) session.getAttribute("name");
-		i = userService.queryId(name); 			// 通过用户名获得用户id
-		list = noteService.getNoteByUid(i);		//通过userId查询所有关联笔记
+		int uid;
+		uid = userService.queryId(name); 			// 通过用户名获得用户id
+		list = noteService.getNoteByUid(uid);		//通过userId查询所有关联笔记
 		model.addAttribute("list", list);
 		return UPDATE_PATE;
 	}
@@ -89,9 +86,8 @@ public class NoteController {
 	/*
 	 * 保存修改
 	 */
-	@RequestMapping("/modify")
-	public String modify(@RequestParam("id") int id,Note note, HttpServletRequest request) {
-		note.setId(id);
+	@PostMapping("/modify")
+	public String modify(Note note, HttpServletRequest request) {
 		noteService.updateNote(note);
 		return MODIFY_SUCCEED;
 	}
